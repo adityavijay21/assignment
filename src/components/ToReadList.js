@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
-
+import { getAllBooks } from './UserData';
 const ToReadList = ({ username }) => {
-    const [toReadList, setToReadList] = useState([
-        "W9752H01",
-        "W8742B09",
-        "W7644A14",
-        "W3245618",
-        "W456709A"
-    ]);
+    const [toReadList, setToReadList] = useState(getAllBooks());
 
     return (
         <div>
             <h2>Welcome, {username}!</h2>
             <h3>To Read List:</h3>
             <ul>
-                {toReadList.map((bookId, index) => (
-                    <li key={index}>{bookId}</li>
+                {toReadList.map((book, index) => (
+                    <li key={index}>{book.id} - {book.title} by {book.author}</li>
                 ))}
             </ul>
         </div>

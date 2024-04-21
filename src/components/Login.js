@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addUser } from './UserData'; 
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
@@ -6,13 +7,11 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Validate username and password
-        if (username && password) {
-            // Perform login logic (e.g., send login request to server)
-            // For demonstration purposes, just call onLogin directly
+        if (username === 'admin' && password === 'password') {
+            addUser(username, password);
             onLogin(username);
         } else {
-            alert('Please enter both username and password');
+            alert('Invalid username or password');
         }
     };
 
